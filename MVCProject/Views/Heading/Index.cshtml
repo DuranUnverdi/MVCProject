@@ -14,7 +14,6 @@
         <div class="container-fluid">
             <div class="row mb-2">
                 <div class="col-sm-6">
-                    <h1>Projects</h1>
                 </div>
             </div>
         </div><!-- /.container-fluid -->
@@ -24,7 +23,7 @@
         <!-- Default box -->
         <div class="card">
             <div class="card-header">
-                <h3 class="card-title">Proje İşlemleri</h3>
+                <h3 class="card-title">Başlık İşlemleri</h3>
                 <div class="card-tools">
                     <button type="button" class="btn btn-tool" data-card-widget="collapse" data-toggle="tooltip" title="Collapse">
                         <i class="fas fa-minus"></i>
@@ -44,7 +43,7 @@
                             <th style="width: 20%">
                                 Başlık Adı
                             </th>
-                            <th style="width: 30%">
+                            <th style="width: 15%">
                                 Oluşturan Yazar
                             </th>
                             <th style="width: 8%" class="text-center">
@@ -88,31 +87,32 @@
                                 </a>
                                 <br />
                                 <small>
-                                   @i.HeadingDate
+                                   @(((DateTime)i.HeadingDate).ToString("dd-MMM-yyyy"))
                                 </small>
                             </td>
                             <td>
                                 <ul class="list-inline">
                                     <li class="list-inline-item">
-                                        <img alt="Avatar" class="table-avatar" src="../../dist/img/avatar.png">
-                                    </li>
+                                        <img style="width:70px;height:70px;" alt="Avatar" class="table-avatar" src="@i.Writer.WriterImage">
+                                     </li>
                                 </ul>
                             </td>
+                            <td>@i.HeadingStatus</td>
                             <td class="project-state">
                                 <span class="@color">@i.Category.CategoryName</span>
                             </td>
                             <td class="project-actions text-right">
-                                <a class="btn btn-primary btn-sm" href="#">
+                                <a class="btn btn-primary btn-sm" href="/Content/ContentByHeading/@i.HeadingID">
                                     <i class="fas fa-folder">
                                     </i>
                                     Yazılar
                                 </a>
-                                <a class="btn btn-info btn-sm" href="#">
+                                <a class="btn btn-info btn-sm" href="/Heading/EditHeading/@i.HeadingID">
                                     <i class="fas fa-pencil-alt">
                                     </i>
                                     Düzenle
                                 </a>
-                                <a class="btn btn-danger btn-sm" href="#">
+                                <a class="btn btn-danger btn-sm" href="/Heading/DeleteHeading/@i.HeadingID">
                                     <i class="fas fa-trash">
                                     </i>
                                     Sil
@@ -129,7 +129,7 @@
     </section>
 </body>
 </html>
-
+<a href="/Heading/AddHeading/" class="btn btn-primary">Yeni Başlık Girişi</a>
 
 
 @*<h2>Index</h2>
