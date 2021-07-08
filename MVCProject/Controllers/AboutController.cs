@@ -16,7 +16,7 @@ namespace MVCProject.Controllers
         public ActionResult Index()
         {
             var aboutValues = aboutManager.GetList();
-            return View();
+            return View(aboutValues);
         } 
         [HttpGet]
         public ActionResult AddAbout()
@@ -29,6 +29,9 @@ namespace MVCProject.Controllers
             aboutManager.AboutAddBL(p);
             return RedirectToAction("Index");
         }
-       
+       public PartialViewResult AboutPartial()
+        {
+            return PartialView();
+        }
     }
 }
